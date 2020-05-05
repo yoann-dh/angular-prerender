@@ -26,6 +26,7 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "prerender": "^5.6.0",
     "express": "^4.17.1",
     "prerender-node": "^3.2.5",
     "rxjs": "~6.5.4",
