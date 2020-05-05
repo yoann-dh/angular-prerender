@@ -1,0 +1,14 @@
+button {
+  min-width: 90px;
+  padding: 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: #1976d2;
+  border: none;
+  color: white;
+  margin: 2em 2px 2px;
+}
+:host {
+  text-align: center;
+  cursor: pointer;
+}
