@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "node dist/angular-prerender/server.js",
-    "dev:start": "NODE_ENV=dev node dist/angular-prerender/server.js",
+    "prerender": "node prerender.js",
     "ng": "ng",
     "serve": "ng serve",
     "build": "ng build",

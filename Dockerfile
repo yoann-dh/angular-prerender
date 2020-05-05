@@ -12,6 +12,7 @@ WORKDIR /ng-app
 COPY . .
 
 ENV PORT 80
+ENV HOST localhost
 EXPOSE 80
 
 RUN yarn build:prod

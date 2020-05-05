@@ -9,12 +9,13 @@ const preRenderServer = prerender();
 
 
 const DIST_FOLDER = join(process.cwd(), './dist/angular-prerender');
+const HOST = process.env.HOST || 'localhost:8080';
 
 async function bootstrap() {
-  if (isDevMode()) {
-    preRenderServer.start();
-  }
-  app.use(require('prerender-node'));
+  preRenderServer.start();
+  app.use(require('prerender-node')
+    .set('prerenderServiceUrl', 'http://localhost:3000/')
+    .set('host', HOST));
   app.use(express.static(DIST_FOLDER));
   router.get('/*', ( req, res) => {
       res.sendFile(DIST_FOLDER + `/index.html`);
