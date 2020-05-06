@@ -29,7 +29,7 @@ async function bootstrap() {
     .set('prerenderServiceUrl', 'http://localhost:3000/')
     .set('host', PRERENDER_HOST));
   app.use(express.static(DIST_FOLDER));
-  app.get('*', ( req, res) => {
+  app.get('/*', ( req, res) => {
       res.sendFile(DIST_FOLDER + '/index.html');
   });
   app.use('/angular-prerender', router);
