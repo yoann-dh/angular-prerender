@@ -4,9 +4,8 @@
   "scripts": {
     "start": "node dist/angular-prerender/server.js",
     "dev:start": "NODE_ENV=dev node dist/angular-prerender/server.js",
-    "start:app": "node dist/angular-prerender/server.js",
-    "build:prod": "yarn build --prod --base-href /angular-prerender/ && yarn build:server",
-    "build:server": "tsc server.ts --outDir dist/angular-prerender",
+    "build:prod": "yarn build --prod --base-href /angular-prerender/ --outputPath dist/angular-prerender && yarn build:server",
+    "build:server": "tsc server.ts --outDir dist",
     "ng": "ng",
     "serve": "ng serve",
     "build": "ng build",

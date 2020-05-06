@@ -1,12 +1,29 @@
 import { join } from 'path';
 import * as express from 'express';
 
-
 const app = express();
 const router = express.Router();
-const APP_PORT = process.env.APP_PORT || 8080;
 const prerender = require('prerender');
+const config = require('./config.json');
 let server;
+/**
+ * Set APP PORT
+ */
+const APP_PORT = process.env.APP_PORT || 8080;
+/**
+ * Set TRUE OR FALSE IF YOU USE BASE_HREF BUILD
+ */
+const IS_BASE_HREF_BUILD = process.env.IS_BASE_HREF_BUILD || true;
+/**
+ * FOLDER CONFIG
+ */
+const DIST_FOLDER = join(process.cwd(), './dist/');
+const PRERENDER_HOST = process.env.PRERENDER_HOST || 'localhost:8080';
+/**
+ * SET YOUR BASE_HREF BUILD IF YOU ENABLED BASE_URL ELSE SET THE DIST FOLDER BUILD
+ * yarn build --prod --base-href /buildName/ --outputPath dist/buildName
+ */
+const ANGULAR_BUILD_NAME = process.env.ANGULAR_BUILD_NAME || config.name;
 
 if (!isDevMode()) {
   server = prerender({
@@ -18,23 +35,21 @@ if (!isDevMode()) {
   server = prerender();
 }
 
-
-
-const DIST_FOLDER = join(process.cwd(), './dist/angular-prerender');
-const PRERENDER_HOST = process.env.PRERENDER_HOST || 'localhost:8080';
-
 async function bootstrap() {
+  IS_BASE_HREF_BUILD ? app.use(express.static(DIST_FOLDER)) : app.use(express.static(DIST_FOLDER + ANGULAR_BUILD_NAME));
   server.start();
   app.use(require('prerender-node')
     .set('prerenderServiceUrl', 'http://localhost:3000/')
     .set('host', PRERENDER_HOST));
-  app.use(express.static(DIST_FOLDER));
-  app.get('/*', ( req, res) => {
-      res.sendFile(DIST_FOLDER + '/index.html');
+
+  router.get('/*', ( req, res) => {
+    res.sendFile(DIST_FOLDER + `${ANGULAR_BUILD_NAME}/index.html`);
   });
-  app.use('/angular-prerender', router);
+
+  app.use(`/${IS_BASE_HREF_BUILD ? ANGULAR_BUILD_NAME : ''}`, router);
+
   app.listen(APP_PORT, () => {
-    console.log(`Node Express server listening on http://localhost:${APP_PORT}/angular-prerender`);
+    console.log(`Node Express server listening on http://localhost:${APP_PORT}/${ANGULAR_BUILD_NAME}`);
   });
 }
 

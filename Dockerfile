@@ -18,6 +18,8 @@ COPY . .
 
 ENV APP_PORT 80
 ENV PRERENDER_HOST localhost
+ENV BASE_URL true
+ENV ANGULAR_BUILD_NAME angular-prerender
 EXPOSE 80
 
 RUN yarn build:prod
