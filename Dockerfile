@@ -16,9 +16,9 @@ WORKDIR /ng-app
 
 COPY . .
 
-ENV APP_PORT 8080
+ENV APP_PORT 80
 ENV PRERENDER_HOST localhost
-EXPOSE 8080
+EXPOSE 80
 
 RUN yarn build:prod
 
