@@ -1,18 +1,15 @@
 import { join } from 'path';
 import * as express from 'express';
-import * as prerender from 'prerender';
 
 const app = express();
 const router = express.Router();
 const PORT = process.env.PORT || 8080;
-const preRenderServer = prerender();
 
 
 const DIST_FOLDER = join(process.cwd(), './dist/angular-prerender');
 const HOST = process.env.HOST || 'localhost:8080';
 
 async function bootstrap() {
-  preRenderServer.start();
   app.use(require('prerender-node')
     .set('prerenderServiceUrl', 'http://localhost:3000/')
     .set('host', HOST));
