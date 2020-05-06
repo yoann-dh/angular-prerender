@@ -1,4 +1,9 @@
-FROM node:12.16.1-alpine3.10
+FROM node:12-alpine
+ENV CHROME_BIN=/usr/bin/chromium-browser
+ENV CHROME_PATH=/usr/lib/chromium/
+
+RUN apk add --update-cache chromium \
+ && rm -rf /var/cache/apk/* /tmp/*
 
 COPY package.json yarn.lock ./
 
@@ -11,9 +16,9 @@ WORKDIR /ng-app
 
 COPY . .
 
-ENV APP_PORT 80
-ENV HOST localhost
-EXPOSE 80
+ENV APP_PORT 8080
+ENV PRERENDER_HOST localhost
+EXPOSE 8080
 
 RUN yarn build:prod
 
