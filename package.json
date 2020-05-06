@@ -2,9 +2,10 @@
   "name": "angular-prerender",
   "version": "1.0.0",
   "scripts": {
-    "start": "node dist/angular-prerender/server.js",
-    "dev:start": "NODE_ENV=dev node dist/angular-prerender/server.js",
-    "build:prod": "yarn build --prod --base-href /angular-prerender/ --outputPath dist/angular-prerender && yarn build:server",
+    "start": "node dist/server.js",
+    "dev:start": "NODE_ENV=dev node dist/server.js",
+    "build:prod:base": "yarn build --prod --base-href /angular-prerender/ --outputPath dist/angular-prerender && yarn build:server",
+    "build:prod": "yarn build --prod && yarn build:server",
     "build:server": "tsc server.ts --outDir dist",
     "ng": "ng",
     "serve": "ng serve",
