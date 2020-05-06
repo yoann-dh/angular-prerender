@@ -4,7 +4,6 @@ import * as express from 'express';
 const app = express();
 const router = express.Router();
 const prerender = require('prerender');
-const config = require('./config.json');
 let server;
 /**
  * Set APP PORT
@@ -13,7 +12,7 @@ const APP_PORT = process.env.APP_PORT || 8080;
 /**
  * Set TRUE OR FALSE IF YOU USE BASE_HREF BUILD
  */
-const IS_BASE_HREF_BUILD = process.env.IS_BASE_HREF_BUILD || true;
+const IS_BASE_HREF_BUILD = !!process.env.ANGULAR_BUILD_NAME;
 /**
  * FOLDER CONFIG
  */
@@ -23,7 +22,7 @@ const PRERENDER_HOST = process.env.PRERENDER_HOST || 'localhost:8080';
  * SET YOUR BASE_HREF BUILD IF YOU ENABLED BASE_URL ELSE SET THE DIST FOLDER BUILD
  * yarn build --prod --base-href /buildName/ --outputPath dist/buildName
  */
-const ANGULAR_BUILD_NAME = process.env.ANGULAR_BUILD_NAME || config.name;
+const ANGULAR_BUILD_NAME = process.env.ANGULAR_BUILD_NAME || '';
 
 if (!isDevMode()) {
   server = prerender({
