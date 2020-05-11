@@ -30,3 +30,4 @@ deploy:
     - kubectl set image deployment ${SERVICE_NAME} ${SERVICE_NAME}=$RELEASE_IMAGE --namespace book
   only:
     - master
+  when: manual
