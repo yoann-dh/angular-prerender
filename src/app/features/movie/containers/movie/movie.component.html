@@ -1,2 +1,6 @@
-<app-movie-list [movies]="movies$ | async"></app-movie-list>
-<button routerLink="/">Retour</button>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <app-movie-list [movies]="movies$ | async"></app-movie-list>
+  <button routerLink="/">Retour</button>
+  <p fxFlexOffset="6">Open your terminal console and tap</p>
+  <code fxFlexOffset="4">curl --user-agent Googlebot {{currentUrl}}</code>
+</div>

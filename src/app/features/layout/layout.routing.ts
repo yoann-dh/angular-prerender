@@ -16,10 +16,6 @@ const routes: Routes = [
         path: 'movie',
         loadChildren: () => import('features/movie/movie.module').then(m => m.MovieModule)
       },
-      {
-        path: 'no-rendertron/movie',
-        loadChildren: () => import('features/no-rendertron-movie/no-rendertron-movie.module').then(m => m.NoRendertronMovieModule)
-      }
     ]
   }
 ];

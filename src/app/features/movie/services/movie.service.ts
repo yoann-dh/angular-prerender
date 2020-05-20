@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Movie } from 'features/movie/models/movie.model';
+import { environment } from 'env/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  API_KEY = '8fa45a677807f79b71e69055f2ac19c4';
+  API_KEY = environment.apiKey;
   constructor(private http: HttpClient) {}
 
   findPopular(): Observable<Movie[]> {

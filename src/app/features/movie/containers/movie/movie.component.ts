@@ -12,6 +12,7 @@ import { SeoService } from '../../../../shared/services/seo.service';
 export class MovieComponent implements OnInit {
 
   movies$: Observable<Movie[]>;
+  currentUrl = window.location.href;
 
   constructor(private movieService: MovieService, private seoService: SeoService) {
   }

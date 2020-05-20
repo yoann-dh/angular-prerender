@@ -1125,10 +1125,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.5.tgz#96ec3b0afafd64a4ccea9107b75bf8489f0e5765"
   integrity sha512-3ySmiBYJPqgjiHA7oEaIo2Rzz0HrOZ7yrNO5HWyaE5q0lQ3BppDZ3N53Miz8bw2I7gh1/zir2MGVZBvpb1zq9g==
 
-"@types/node@^12.11.1":
-  version "12.12.38"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.38.tgz#58841a382f231ad005dbb935c36d44aa1118a26b"
-  integrity sha512-75eLjX0pFuTcUXnnWmALMzzkYorjND0ezNEycaKesbUBg9eGZp4GHPuDmkRc4mQQvIpe29zrzATNRA6hkYqwmA==
+"@types/node@^14.0.4":
+  version "14.0.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.4.tgz#43a63fc5edce226bed106b31b875165256271107"
+  integrity sha512-k3NqigXWRzQZVBDS5D1U70A5E8Qk4Kh+Ha/x4M8Bt9pF0X05eggfnC9+63Usc9Q928hRUIpIhTQaXsZwZBl4Ew==
 
 "@types/q@^0.0.32":
   version "0.0.32"
@@ -3170,6 +3170,11 @@ dot-prop@^5.2.0:
   integrity sha512-uEUyaDKoSQ1M4Oq8l45hSE26SnTxL6snNnqvK/VWx5wJhmff5z0FUVJDKDanor/6w3kzE3i7XZOk+7wC0EXr1A==
   dependencies:
     is-obj "^2.0.0"
+
+dotenv@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.7.1"

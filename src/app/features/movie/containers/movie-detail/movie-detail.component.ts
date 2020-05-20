@@ -12,6 +12,7 @@ import { SeoService } from 'shared/services/seo.service';
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
   IMG_BASE_PATH = 'https://image.tmdb.org/t/p/w500';
+  currentUrl = window.location.href;
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
