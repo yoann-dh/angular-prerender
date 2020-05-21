@@ -2,10 +2,11 @@
   "name": "angular-prerender",
   "version": "1.0.0",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node server.js",
+    "start:dev": "nodemon",
     "build:prod": "yarn build --prod && yarn build:server",
     "build:prod:base": "yarn build --prod --base-href /angular-prerender/ --outputPath dist/angular-prerender && yarn build:server",
-    "build:server": "tsc server.ts --outDir dist",
+    "build:server": "tsc server.ts",
     "ng": "ng",
     "serve": "ng serve",
     "build": "ng build",
@@ -26,6 +27,7 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "prerender": "^5.6.0",
@@ -51,8 +53,9 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "nodemon": "^2.0.4",
     "protractor": "~5.4.3",
-    "ts-node": "~8.3.0",
+    "ts-node": "^8.10.1",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
   }

@@ -1,17 +1,20 @@
 import { join } from 'path';
 import * as express from 'express';
 require('dotenv').config();
+const axios = require('axios');
+
 
 const app = express();
 const router = express.Router();
 const prerender = require('prerender');
 let server;
 /**
- * Set APP PORT
+ * Set APP ENV CONFIG
  */
 const APP_PORT = process.env.APP_PORT;
 const IS_BASE_HREF_BUILD = !!process.env.ANGULAR_BUILD_NAME;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+const API_KEY = process.env.API_KEY;
 /**
  * FOLDER CONFIG
  */
@@ -40,6 +43,13 @@ async function bootstrap() {
     .set('prerenderServiceUrl', 'http://localhost:3000/')
     .set('host', PRERENDER_HOST));
 
+  router.get('/api/moviedb/popular-movies', (req, res) => {
+    findPopularMovies().then(
+      (response) => res.send(response.data.results));
+  });
+  router.get('/api/moviedb/:id', (req, res) => {
+    findOneMovie(+req.params.id).then((response) => res.send(response.data));
+  });
   router.get('/*', ( req, res) => {
     res.sendFile(DIST_FOLDER + `${ANGULAR_BUILD_NAME}/index.html`);
   });
@@ -59,3 +69,20 @@ async function bootstrap() {
   }
 })();
 
+/**
+ * Axios async req to movie db
+ */
+const findPopularMovies = async () => {
+  try {
+    return await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=fr-FR&page=1`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+const findOneMovie = async (id: number) => {
+  try {
+    return await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=fr-FR`);
+  } catch (error) {
+    console.error(error);
+  }
+};

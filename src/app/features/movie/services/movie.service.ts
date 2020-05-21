@@ -1,27 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Movie } from 'features/movie/models/movie.model';
-import { environment } from 'env/environment';
+import { APP_BASE_HREF } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  API_KEY = environment.apiKey;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, @Inject(APP_BASE_HREF) private baseHref: string) {}
 
   findPopular(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${this.API_KEY}&language=fr-FR&page=1`)
-      .pipe(
-        map((res) => res['results'])
-      );
+    return this.http.get<Movie[]>(`${this.baseHref}api/moviedb/popular-movies`);
   }
   findOne(id: number): Observable<Movie> {
-    return this.http.get<Movie>(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${this.API_KEY}&language=fr-FR`
-    );
+    return this.http.get<Movie>(`${this.baseHref}api/moviedb/${id}`);
   }
 }
