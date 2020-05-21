@@ -27,7 +27,7 @@ deploy:
     - kubectl config set-context default --cluster=k8s --user=gitlab
     - kubectl config use-context default
     - kubectl get pods -A
-    - kubectl set image deployment ${SERVICE_NAME} ${SERVICE_NAME}=$RELEASE_IMAGE --namespace ${NAMESPACE_PROD}
+    - kubectl set image deployment ${SERVICE_NAME} ${SERVICE_NAME}=$RELEASE_IMAGE --namespace ${NAMESPACE}
   only:
     - master
   when: manual
