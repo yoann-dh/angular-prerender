@@ -24,7 +24,7 @@ export class MovieComponent implements OnInit {
         title: 'Rendertron Seo Angular',
         description:
           'Seo friendly with google rendertron for angular 9 app by fruitylab.fr',
-        image: 'https://book.fruitylab.fr/rendertron/assets/images/rendertron-base.png',
+        image: 'https://book.fruitylab.fr/rendertron/assets/images/angular-prerender.jpg',
         slug: '',
       }
     );
