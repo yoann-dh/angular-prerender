@@ -10,5 +10,10 @@ button {
 }
 :host {
   text-align: center;
-  cursor: pointer;
+}
+code {
+  border-radius: 6px;
+  color: white;
+  padding: 8px;
+  background: #24292e;
 }

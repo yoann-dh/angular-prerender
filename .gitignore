@@ -44,4 +44,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-.env
+/src/app/shared/keys/keys.ts

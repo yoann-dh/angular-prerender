@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'features/movie/services/movie.service';
 import { Movie } from 'features/movie/models/movie.model';
 import { SeoService } from 'shared/services/seo.service';
+import { environment } from 'env/environment';
 
 @Component({
   selector: 'app-movie-detail',
