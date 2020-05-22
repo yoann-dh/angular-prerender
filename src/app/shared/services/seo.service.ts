@@ -1,18 +1,20 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { SeoModel } from '../models/seo.model';
+import { APP_BASE_HREF } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeoService {
-  constructor(private meta: Meta, private title: Title) { }
+  constructor(private meta: Meta, private title: Title, @Inject(APP_BASE_HREF) private baseHref: string) { }
   generateTags(config: SeoModel) {
     config = {
       title: 'Rendertron Seo Angular',
       description:
         'Seo friendly with google rendertron for angular 9 app by fruitylab.fr',
-      image: 'https://book.fruitylab.fr/rendertron/assets/images/angular-prerender.jpg',
+      image: `https://book.fruitylab.fr${this.baseHref}assets/images/angular-prerender.jpg`,
       slug: '',
       ...config
     };
